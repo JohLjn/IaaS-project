@@ -1,0 +1,57 @@
+$primary-color: #0a0f26;
+$headers: #00dc82;
+$box-shadow-poems: #354796;
+$box-border: #7ef0c0;
+
+body {
+  // background: linear-gradient(
+  //   rgb(230, 224, 224),
+  //   rgb(255, 255, 255),
+  //   rgb(206, 201, 201)
+  // );
+  background: $primary-color;
+  color: #fff;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
+// @include transition(all 0.5s ease);
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// @include border-radius(3px);
+
+@mixin casual-button() {
+  padding: 15px 85px;
+  @include border-radius(5px);
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #00dc82;
+  color: #fff;
+  @include transition(all 0.2s ease);
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
+
+// @include casual-button();

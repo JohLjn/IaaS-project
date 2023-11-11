@@ -1,0 +1,37 @@
+services:
+  backend:
+    build: backend
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./backend/.env
+    ports:
+      - "3000:3000"
+    networks:
+      - azurenetwork
+  database:
+    environment:
+      - POSTGRES_PASSWORD={POSTGRES_PASSWORD}
+    healthcheck:
+      interval: 1s
+      test: "pg_isready --username=postgres"
+    image: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - azurenetwork
+
+  frontend:
+    build: frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx-config/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - azurenetwork
+    depends_on:
+      - backend
+
+networks:
+  azurenetwork:
