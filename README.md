@@ -18,6 +18,3 @@ winpty docker compose exec -it database psql -U postgres
    (Den som importerades i steg 1)
 
 \i /var/lib/postgresql/data/init.sql
-
- ^.     . ^
-   ( @ )
